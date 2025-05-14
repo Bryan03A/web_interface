@@ -8,7 +8,7 @@
     /* General styles */
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #f4f7fa;
+      background-color: #e0f7fa;
       margin: 0;
       padding: 0;
       display: flex;
@@ -18,31 +18,63 @@
       height: 100vh;
     }
 
+    /* Clock styles */
+    #clock {
+      width: 100%;
+      text-align: center;
+      padding: 15px;
+      font-size: 20px;
+      background-color: #b2ebf2;
+      color: #006064;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-weight: bold;
+    }
+
     h1 {
-      color: #333;
+      color: #00796b;
       margin-bottom: 20px;
+      font-size: 36px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #00796b;
+      font-size: 24px;
+      margin-top: 40px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #004d40;
+      text-align: center;
+      margin-top: 10px;
+      background-color: #ffffff;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     /* Form styles */
     input[type="text"] {
-      padding: 10px;
+      padding: 12px;
       margin-bottom: 20px;
-      font-size: 16px;
-      width: 250px;
-      border: 1px solid #ccc;
+      font-size: 18px;
+      width: 280px;
+      border: 1px solid #00796b;
       border-radius: 5px;
       transition: border-color 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     input[type="text"]:focus {
-      border-color: #4CAF50;
+      border-color: #004d40;
     }
 
     button {
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 12px 20px;
+      font-size: 18px;
       color: white;
-      background-color: #4CAF50;
+      background-color: #00796b;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -50,7 +82,7 @@
     }
 
     button:hover {
-      background-color: #45a049;
+      background-color: #004d40;
     }
 
     /* People list styles */
@@ -58,11 +90,11 @@
       list-style-type: none;
       padding: 0;
       margin: 0;
-      width: 300px;
+      width: 350px;
     }
 
     li {
-      background-color: white;
+      background-color: #ffffff;
       padding: 15px;
       margin: 10px 0;
       border-radius: 5px;
@@ -70,12 +102,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-size: 18px;
     }
 
     li button {
       background-color: #f44336;
-      padding: 5px 10px;
-      font-size: 14px;
+      padding: 6px 12px;
+      font-size: 16px;
       border-radius: 3px;
       border: none;
       cursor: pointer;
@@ -83,16 +116,23 @@
     }
 
     li button:hover {
-      background-color: #e53935;
+      background-color: #d32f2f;
     }
   </style>
 </head>
 <body>
-  <h1>People</h1>
+
+  <!-- Real-time clock -->
+  <div id="clock">Loading current time...</div>
+
+  <h1>People Manager</h1>
   <ul id="peopleList"></ul>
 
   <input type="text" id="nameInput" placeholder="Enter name">
   <button onclick="addPerson()">Add Person</button>
+
+  <h2>Message from Heroku API:</h2>
+  <p id="herokuMessage">Loading message...</p>
 
   <script src="script.js"></script>
 </body>
