@@ -1,4 +1,6 @@
-const API_URL = "http://34.233.177.198:5000/people";
+const API_URL = "https://api-rest-vercel-dusky.vercel.app/people";
+const HEROKU_API_URL = "https://edielproject-569b537b617d.herokuapp.com/api/hello";
+const TIME_API_URL = "https://api-time-cwyk.onrender.com/api/time";
 
 function loadPeople() {
   fetch(API_URL)
@@ -35,4 +37,36 @@ function deletePerson(id) {
     .then(() => loadPeople());
 }
 
-window.onload = loadPeople;
+function loadHerokuMessage() {
+  fetch(HEROKU_API_URL)
+    .then(response => response.json())
+    .then(data => {
+      const messageElement = document.getElementById("herokuMessage");
+      messageElement.textContent = data.message || "No message received";
+    })
+    .catch(error => {
+      console.error('Error fetching message from Heroku:', error);
+    });
+}
+
+// Real-time clock updater
+function updateClock() {
+  fetch(TIME_API_URL)
+    .then(response => response.json())
+    .then(data => {
+      const clockElement = document.getElementById("clock");
+      clockElement.textContent = "Current Time (UTC): " + data.formatted_time;
+    })
+    .catch(error => {
+      document.getElementById("clock").textContent = "Error loading time.";
+      console.error("Failed to fetch time:", error);
+    });
+}
+
+// Initial load
+window.onload = () => {
+  loadPeople();
+  loadHerokuMessage();
+  updateClock();
+  setInterval(updateClock, 1000); // Update time every second
+};
