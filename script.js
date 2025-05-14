@@ -49,7 +49,6 @@ function loadHerokuMessage() {
     });
 }
 
-// Real-time clock updater
 function updateClock() {
   fetch(TIME_API_URL)
     .then(response => response.json())
@@ -63,10 +62,15 @@ function updateClock() {
     });
 }
 
+function toggleIframe() {
+  const container = document.getElementById("iframeContainer");
+  container.style.display = (container.style.display === "none") ? "block" : "none";
+}
+
 // Initial load
 window.onload = () => {
   loadPeople();
   loadHerokuMessage();
   updateClock();
-  setInterval(updateClock, 1000); // Update time every second
+  setInterval(updateClock, 1000);
 };
