@@ -1,5 +1,5 @@
 const API_URL = "https://api-rest-vercel-dusky.vercel.app/people";
-const HEROKU_API_URL = "https://edielproject-569b537b617d.herokuapp.com/api/hello";
+const HEROKU_API_URL = "https://calm-brook-87250-f1e762b003ff.herokuapp.com/api/hello";
 const TIME_API_URL = "https://api-time-cwyk.onrender.com/api/time";
 
 function loadPeople() {
@@ -42,7 +42,11 @@ function loadHerokuMessage() {
     .then(response => response.json())
     .then(data => {
       const messageElement = document.getElementById("herokuMessage");
-      messageElement.textContent = data.message || "No message received";
+      messageElement.innerHTML = `
+        <strong>Message:</strong> ${data.message}<br>
+        <strong>Client IP:</strong> ${data.client_ip}<br>
+        <strong>Resultado:</strong> ${data.resultado}
+      `;
     })
     .catch(error => {
       console.error('Error fetching message from Heroku:', error);
@@ -67,7 +71,6 @@ function toggleIframe() {
   container.style.display = (container.style.display === "none") ? "block" : "none";
 }
 
-// Initial load
 window.onload = () => {
   loadPeople();
   loadHerokuMessage();
