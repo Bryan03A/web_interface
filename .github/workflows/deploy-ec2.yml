@@ -13,13 +13,21 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Copy code to EC2 and pull latest changes
-      uses: appleboy/ssh-action@v1.0.0
+    - name: Copy files to EC2
+      uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ec2-user
-        key: ${{ secrets.EC2_SSH_KEY }}
+        key: ${{ secrets.EC2_KEY }}
+        source: "."
+        target: "/home/ec2-user/web_interface"
+
+    - name: Deploy to Apache directory
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ec2-user
+        key: ${{ secrets.EC2_KEY }}
         script: |
-          cd web_interface
-          git pull origin main
+          sudo cp -r /home/ec2-user/web_interface/* /var/www/html/
           sudo systemctl restart httpd
