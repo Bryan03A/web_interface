@@ -27,7 +27,7 @@ jobs:
       with:
         host: ${{ secrets.EC2_HOST }}
         username: ec2-user
-        key: ${{ secrets.EC2_ssH_KEY }}
+        key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           sudo cp -r /home/ec2-user/web_interface/* /var/www/html/
           sudo systemctl restart httpd
