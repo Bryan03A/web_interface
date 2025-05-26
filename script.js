@@ -68,7 +68,7 @@ function updateClock() {
 
 function toggleIframe() {
   const container = document.getElementById("iframeContainer");
-  container.style.display = (container.style.display === "none") ? "block" : "none";
+  container.classList.toggle("active");
 }
 
 window.onload = () => {
