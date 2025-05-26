@@ -10,23 +10,22 @@
 
   <div id="clock">Loading current time...</div>
 
-  <h1>People Manager</h1>
+  <h1>People Manager XD</h1>
   <ul id="peopleList"></ul>
 
-  <input type="text" id="nameInput" placeholder="Enter name" />
-  <button onclick="addPerson()">Add Person</button>
+  <div class="input-container">
+    <input type="text" id="nameInput" placeholder="Enter name" />
+    <button onclick="addPerson()">Add Person</button>
+  </div>
 
   <h2>Message from Heroku API:</h2>
   <p id="herokuMessage">Loading message...</p>
 
-  <h2>Message from DigitalOcean API:</h2>
-  <button onclick="toggleIframe()">Digital Ocean has something to say</button>
-
   <div id="iframeContainer">
     <iframe id="digitalOceanFrame"
             src="https://first-deploy-laggk.ondigitalocean.app/"
-            frameborder="0">
-    </iframe>
+            frameborder="0"></iframe>
+    <button id="toggleButton" onclick="toggleIframe()">Digital Ocean has something to say</button>
   </div>
 
   <script src="script.js"></script>
