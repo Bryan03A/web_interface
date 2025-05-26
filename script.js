@@ -1,5 +1,5 @@
 const API_URL = "https://api-rest-vercel-dusky.vercel.app/people";
-const HEROKU_API_URL = "https://calm-brook-87250-f1e762b003ff.herokuapp.com/api/hello";
+const HEROKU_API_URL = "https://edielhellopython-768e7c968ae4.herokuapp.com/api/hello";
 const TIME_API_URL = "https://api-time-cwyk.onrender.com/api/time";
 
 function loadPeople() {
